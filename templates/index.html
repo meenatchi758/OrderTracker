@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+{% block content %}
+<h4>Place a New Order</h4>
+<form method="POST" class="w-50">
+    <input name="customer" class="form-control mb-2" placeholder="Customer Name" required>
+    <input name="product" class="form-control mb-2" placeholder="Product Name" required>
+    <input name="quantity" type="number" class="form-control mb-2" placeholder="Quantity" required>
+    <textarea name="address" class="form-control mb-3" placeholder="Delivery Address" required></textarea>
+    <button class="btn btn-success">Submit Order</button>
+</form>
+<hr>
+<a href="{{ url_for('track') }}">Track Order</a> | <a href="{{ url_for('admin') }}">Admin Panel</a>
+{% endblock %}
+
+    
+</body>
+</html>

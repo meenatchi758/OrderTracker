@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+{% block content %}
+<h4>Admin Panel</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr><th>ID</th><th>Customer</th><th>Product</th><th>Qty</th><th>Status</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.customer }}</td>
+            <td>{{ order.product }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+                <a href="{{ url_for('update', oid=order.id) }}" class="btn btn-sm btn-warning">Update</a>
+                <a href="{{ url_for('delete', oid=order.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Delete this order?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('index') }}">← Back</a>
+{% endblock %}
+
+</body>
+</html>
